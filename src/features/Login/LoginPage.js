@@ -1,42 +1,17 @@
 import { useState } from "react"
 import { ImageBackground, Keyboard, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import MainContainer from "../../shared/components/MainContainer"
-import { Entypo } from '@expo/vector-icons'; 
 import FormInput from "../../shared/components/FormInput";
 import FormPassword from "../../shared/components/FormPassword";
 import FormButton from "../../shared/components/FormButton";
-import { useNavigation } from "@react-navigation/native";
-import { ROUTE } from "../../shared/hook/constant";
-import useViewState from "../../shared/hook/UseViewState";
-import { useDeps } from "../../shared/hook/UseDependency";
 import Spinner from "../../shared/components/Spinner";
 import SnackBar from "../../shared/components/SnackBar";
-import { useAuth } from "../../shared/hook/UseAuth";
+import useLoginPage from "./UseLoginPage";
 
 
 const LoginPage = () => {
-    const navigation = useNavigation();
-    const [userName, onChangeUserName] = useState('');
-    const [password, onChangePassword] = useState('');
-    const {viewState, setLoading, setError} = useViewState();
-    const {loginService} = useDeps();
-    const {onLogin} = useAuth();
-
-    const onAuthenticate = async () => {
-        Keyboard.dismiss();
-        setLoading();
-        try {
-            const response = await onLogin({userName: userName, password: password})
-            console.log('Response Login',response);
-            if (response) {
-                navigation.replace(ROUTE.HOME)
-            } else {
-                setError(new Error('Unauthorized'));
-            }
-        } catch (error) {
-            setError(error)
-        }
-    }
+    const {viewState, userName, password, onChangeUserName, onChangePassword, onAuthenticate} = useLoginPage();
+    
     return(
         <MainContainer>
             {viewState.isLoading && <Spinner text='Please Wait!'/>}
@@ -57,7 +32,7 @@ const LoginPage = () => {
                     {/* <FormButton label='Login' onClick={()=>{navigation.replace(ROUTE.HOME)}}/> */}
                     <FormButton label='Login' onClick={onAuthenticate}/>
                 </View>
-                {viewState.error !== null && <SnackBar message='Unauthorized'/>}
+                {viewState.error !== null && <SnackBar message={viewState.error.message}/>}
             </ImageBackground>
         </MainContainer>
     )

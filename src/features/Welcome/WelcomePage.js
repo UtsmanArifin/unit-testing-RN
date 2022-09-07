@@ -12,7 +12,7 @@ import { theme } from "../../shared/Theme";
 const WelcomePage = () => {
     const navigation = useNavigation();
     return(
-        <MainContainer>
+        <MainContainer hint="Welcome">
             <AppBackground style={{
                 justifyContent: 'space-evenly',
                 alignItems: 'center'
