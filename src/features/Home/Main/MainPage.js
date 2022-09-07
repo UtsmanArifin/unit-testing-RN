@@ -48,7 +48,7 @@ const MainPage = () => {
     }
 
     return(
-        <MainContainer>
+        <MainContainer hint="Home">
             <AppBackground>
                 <HeaderPageLabel text={"WMB"} avatarImg='https://picsum.photos/200/400'/>
                 {modalVisible && <ModalDialog onPress={()=>setModalVisible(false)}/>}
