@@ -1,7 +1,7 @@
 import { Modal, StyleSheet, Text, View } from "react-native"
 import FormButton from "./FormButton"
 
-const ModalDialog = ({visible, onPress}) => {
+const ModalDialog = ({visible, onPress, data}) => {
     return(
         <View style={styles.mainContainer}>
             <Modal
@@ -11,7 +11,7 @@ const ModalDialog = ({visible, onPress}) => {
             >
                 <View style={styles.mainContainer}>
                     <View style={styles.modalContainer}>
-                        <Text>Ini Modal</Text>
+                        <Text>{data}</Text>
                         <FormButton label={'Dismiss'} onClick={onPress}/>
                     </View>
                 </View>
