@@ -11,6 +11,7 @@ import Menu1 from "../features/Home/Menu1";
 import { useAuth } from "../shared/hook/UseAuth";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
+import ScannerPage from "../features/Scanner/SannerPage";
 
 const Stack = CreateStackNavigator();
 
@@ -34,12 +35,13 @@ const AppRouter = ({initRoute=null}) => {
     }, [])
     console.log('GetToken APPROUTER', initialRoute);
     return initialRoute !== null ? (
-        <Stack.Navigator initialRouteName={initialRoute}>
+        <Stack.Navigator initialRouteName={ROUTE.HOME}>
             <Stack.Screen name={ROUTE.WELCOME} component={WelcomePage} options={{headerShown: false}}/>
             <Stack.Screen name={ROUTE.LOGIN} component={LoginPage} options={{headerShown: false}}/>
             <Stack.Screen name={ROUTE.HOME} component={HomePage} options={{headerShown: false}}/>
             <Stack.Screen name={ROUTE.PIN} component={PinPage} options={{headerTitle:'', headerBackImage: ()=> <Entypo name="back" size={24} color={theme.color.foreground} />}}/>
             <Stack.Screen name={'Menu1'} component={Menu1}/>
+            <Stack.Screen name={ROUTE.SCANNER} component={ScannerPage}/>
         </Stack.Navigator>
     )  : (
         <View></View>

@@ -1,0 +1,23 @@
+{
+  "cli": {
+    "version": ">= 2.1.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "BASE_URL": "http://192.168.100.5:3001",
+        "CURR_VERSION": "1.0.1",
+        "APP_VARIANT": "development"
+      }
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {}
+  }
+}

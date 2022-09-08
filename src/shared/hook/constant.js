@@ -5,6 +5,7 @@ export const ROUTE = {
     HOME: 'Home',
     MAIN: 'Main',
     PIN: 'Pin',
+    SCANNER: 'Scanner'
 }
 
 export const SERVICE = {

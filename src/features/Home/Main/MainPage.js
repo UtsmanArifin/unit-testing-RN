@@ -64,7 +64,9 @@ const MainPage = () => {
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.menuContainer}>
-                                <TouchableOpacity style={styles.touchAble} onPress={()=>navigation.navigate('Menu1')}>
+                                <TouchableOpacity style={styles.touchAble} onPress={()=>navigation.navigate(ROUTE.SCANNER, {
+                                    prevPage: ROUTE.HOME
+                                })}>
                                     <FontAwesome name="user-plus" size={24} color={theme.color.primary}/>
                                     <Text style={styles.text}>Customer{'\n'} Registration</Text>
                                 </TouchableOpacity>
